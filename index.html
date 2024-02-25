@@ -8,14 +8,41 @@
 </head>
 <body>
 
-    <!------
-        container
+   <!------
+    sketch board
     ------>
-    <div class="container" id="sketch-board">
+    <div class="sketch">
+    <!------
+    container
+    ------>
+        <div class="button-container">
+            <div class="grid-button-container">
+                <button class="grid-button button">
+                    <box-icon name='grid'></box-icon>
+                       Grid
+                    </button>
+            </div>
+        </div>
+        <div class="container" id="sketch-board">
         <!-----
             grid div here
         ---->
+        </div>
+        <div class="resolution-container">
+            <div class="resolution-bar-container">
+                <input type="range" name="resolution" id="sketch-resolution" min="1" max="100" value="16" class="resolution-bar">
+            </div>
+            <p class="resolution-status"></p>
+        </div>
     </div>
+    <!-------
+        link box icons
+     --------->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <!-----
+        link script.js
+    ------>
     <script src="script.js"></script>
 </body>
 </html>
