@@ -1,37 +1,47 @@
 const GRIDSIDE = 600
-const squarePerSide = 50
 //Get element from html element 
 const gridButton = document.querySelector(".grid-button")
 const resolutionBar = document.querySelector("#sketch-resolution")
-let resolutionValue = document.querySelector("#sketch-resolution").value
 const resolutionStatus = document.querySelector(".resolution-status")
 
-function showResolution(){
-    resolutionStatus.textContent = `${resolutionValue} × ${resolutionValue} (Resolution) `
+    const sketchBoard = document.querySelector("#sketch-board")
+function setupSketch(){
+    sketchBoard.style.width = sketchBoard.style.height = `${GRIDSIDE}px`
+    createSketchBoard(16)
 }
 
-
-
-const sketchBoard = document.querySelector("#sketch-board")
-sketchBoard.style.width = sketchBoard.style.height = `${GRIDSIDE}px`
 
 //function drawOnSketch
 function drawOnSketch(){
-    this.style.backgroundColor = "black"
+    this.style.backgroundColor = "#0b0b0b"
 }
 
 function createSketchBoard(squarePerSide){
+    sketchBoard.innerHTML = "";
+
     for(let i = 0; i < (squarePerSide * squarePerSide); i++){
         const gridCell = document.createElement("div")
         gridCell.style.width = gridCell.style.height = `${(GRIDSIDE / squarePerSide)}px`
         gridCell.classList.add("cell")
         sketchBoard.appendChild(gridCell)
         gridCell.addEventListener("mouseover", drawOnSketch)
+        gridButton.addEventListener("click", () =>{
+            gridCell.style.border = 0
+        })
     }
-    }
+}
   
 
+function showResolution(){
+    let resolutionValue = document.querySelector("#sketch-resolution").value
+    resolutionStatus.textContent = `${resolutionValue} × ${resolutionValue} (Resolution) `
+    createSketchBoard(resolutionValue)
+  
+}
+
+
 function run(){
-    createSketchBoard(squarePerSide)
+    resolutionBar.addEventListener("change", showResolution)
+    setupSketch()
 }
 run()
