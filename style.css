@@ -28,6 +28,9 @@ body{
 
 .button-container{
   margin-block: 10px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 
 .button {
@@ -38,6 +41,7 @@ body{
   padding: 2px 5px;
   background: #fff;
   border: 1px solid whitesmoke;
+  width: 70px;
 }
 .resolution-container{width: 100%;}
 
@@ -53,3 +57,7 @@ body{
 .cell{
   border: 1px solid whitesmoke;
 }
+.cell.active{
+  border: 0;
+}
+
